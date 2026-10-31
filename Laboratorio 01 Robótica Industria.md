@@ -14,11 +14,14 @@
 Se diseñó un soporte a medida para fijar un marcador o plumón al *flange* del robot ABB IRB 140.
 * **Inclinación de 30° para Evitar Singularidades:** Siguiendo la recomendación del laboratorista, la herramienta se diseñó con un ángulo de inclinación de **30°** respecto al eje del *flange*. Esta geometría es crucial para evitar que las articulaciones del muñón del robot (ejes 4 y 6) se alienen colinealmente (*singularidad de muñeca*), garantizando el rango cinemático adecuado para trazar las trayectorias sobre el plano sin bloquear los ejes.
 
+<img width="1366" height="768" alt="Captura de pantalla 2026-10-30 205216" src="https://github.com/user-attachments/assets/0d74e2da-4096-4921-915b-2977bb41e2a8" />
 
 
 ### 2. Calibración de la herramienta (`tooldata`)
 * **Entorno Virtual (RobotStudio):** Se importó el modelo CAD de la herramienta y se definió el marco de herramienta local (`MyNewTool`), configurando las coordenadas del TCP a $X = 7.434\text{ mm}$, $Y = 0.864\text{ mm}$, $Z = 121.853\text{ mm}$ y su orientación en cuaterniones.
 * **Procedimiento Teórico (Robot Real):** En la celda presencial se contempla el **método de 4 Puntos** (*4-Point Method*) en el FlexPendant: aproximar la punta del marcador a un punto fijo de referencia (*spike*) desde cuatro orientaciones marcadamente distintas para que el controlador calcule por intersección matemática la ubicación exacta del TCP.
+
+https://github.com/user-attachments/assets/628421d2-cc70-49dc-9c80-766e9e4d7f5a
 
 ### 3. Creación de Targets, Paths, Trayectorias y Rutinas
 * **WorkObject (`cake`) y Configuración de Puntos:** Se definió un sistema de coordenadas de trabajo (`wobjdata cake`) sobre la superficie de la torta. Todos los puntos (`robtarget`) se crearon referenciados a este marco local con la orientación necesaria para mantener la herramienta perpendicular a la superficie.
